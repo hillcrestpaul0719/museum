@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <h1>Exhibits</h1>
+    {% for i in exhibits %}
+        <a href="{% url 'exhibit' i.pk %}">{{ i.name }}</a>
+    {% endblock %}
+{% endblock %}

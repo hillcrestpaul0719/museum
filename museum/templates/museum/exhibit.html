@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+
+{% block body %}
+    <h1>Exhibit: {{ exhibit.name }}</h1>
+    <p>{{ exhibit.description }}</p>
+    <a href="{% url 'object' exhibit.object[0].pk %}">Enter</a>
+{% endblock %}
