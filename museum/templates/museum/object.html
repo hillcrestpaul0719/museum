@@ -1,15 +1,26 @@
 {% extends "museum/base.html" %}
 
 {% block 'body' %}
-    <h1>Exhibit: <a href="{% url 'exhibit' object.exhibit.pk %}">{{ object.exhibit.name }}</a></h1>
-    <img src="{{ object.image.url }}" style="max-height: 25%; max-width: 25%">
-    <h1>Object: {{ object.name }}</h1>
-    <p>{{ object.description }}</p>
-    {% if not prevObj == None %}
-        <a href="{% url 'object' prevObj.pk %}">Prev</a>
-    {% endif %}
-    
-    {% if not nextObj == None %}
-        <a href="{% url 'object' nextObj.pk %}">Next</a>
-    {% endif %}
+    <h1>Exhibit: <a href="{% url 'exhibit' object.0.exhibit.pk %}">{{ object.0.exhibit.name }}</a></h1>
+    <img src="{{ object.0.image.url }}" style="max-height: 25%; max-width: 25%">
+    <h1>Object: {{ object.0.name }}</h1>
+    <p>{{ object.0.description }}</p>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if object.has_previous %}
+                <a href="{% url 'object' object.0.exhibit.pk 1 %}">&laquo; first</a>
+                <a href="{% url 'object' object.0.exhibit.pk object.previous_page_number %}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Object {{ object.number }} of {{ object.paginator.num_pages }}.
+            </span>
+
+            {% if object.has_next %}
+                <a href="{% url 'object' object.0.exhibit.pk object.next_page_number %}">next</a>
+                <a href="{% url 'object' object.0.exhibit.pk object.paginator.num_pages %}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
 {% endblock %}

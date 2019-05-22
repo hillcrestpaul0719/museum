@@ -4,5 +4,5 @@
     <a href="{% url 'index' %}">Back to Index</a>
     <h1>Exhibit: {{ exhibit.name }}</h1>
     <p>{{ exhibit.description }}</p>
-    <a href="{% url 'object' start_object.pk %}">Enter</a>
+    <a href="{% url 'object' exhibit.pk start_object.pk %}">Enter</a>
 {% endblock %}
