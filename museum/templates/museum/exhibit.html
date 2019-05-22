@@ -3,6 +3,6 @@
 {% block 'body' %}
     <a href="{% url 'index' %}">Back to Index</a>
     <h1>Exhibit: {{ exhibit.name }}</h1>
-    <p>{{ exhibit.description }}</p>
-    <a href="{% url 'object' exhibit.pk start_object.pk %}">Enter</a>
+    <p>{{ exhibit.description|safe|linebreaksbr }}</p>
+    <a href="{% url 'object' exhibit.pk 1 %}">Enter</a>
 {% endblock %}

@@ -12,8 +12,7 @@ def index(request):
 
 def exhibit(request, pk):
     exhibit = Exhibit.objects.get(pk=pk)
-    start_object = Object.objects.filter(exhibit__pk=exhibit.pk)[0]
-    return render(request, 'museum/exhibit.html', {'exhibit': exhibit, 'start_object': start_object})
+    return render(request, 'museum/exhibit.html', {'exhibit': exhibit})
 
 def object(request, exhibit_pk, obj_num):
     # object = Object.objects.get(pk=pk)
