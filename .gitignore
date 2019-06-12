@@ -4,3 +4,4 @@ media/
 mysite/settings_gke_prod.py
 mysite/settings_gae_prod.py
 mysite/gcs.json
+static
